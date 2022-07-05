@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.ai_learningplatform.mapper.FriendMapper">
+
+    <select id="getAllFriend" resultType="Friends">
+        select friends.id,friends.userId,friends.friendId,friends.friendTime,admin.adminName as friendName,admin.email as friendEmail,admin.avatar as friendAvatar from friends inner join admin on friends.friendId = admin.id
+    </select>
+
+    <select id="getOneFriend" resultType="Friends">
+        select friends.id,friends.userId,friends.friendId,friends.friendTime,admin.adminName as friendName,admin.email as friendEmail,admin.avatar as friendAvatar from friends inner join admin on friends.friendId = admin.id where friends.userId = #{userId}
+    </select>
+
+    <select id="getQueryFriend" resultType="Friends">
+        select friends.id,friends.userId,friends.friendId,friends.friendTime,admin.adminName as friendName,admin.email as friendEmail,admin.avatar as friendAvatar from friends inner join admin on friends.friendId = admin.id where admin.adminName like ${name}
+    </select>
+
+    <select id="getOneQueryFriend" resultType="Friends">
+        select friends.id,friends.userId,friends.friendId,friends.friendTime,admin.adminName as friendName,admin.email as friendEmail,admin.avatar as friendAvatar from friends inner join admin on friends.friendId = admin.id where friends.userId = #{userId} and friends.userId = #{userId}
+    </select>
+
+    <delete id="deleteFriend">
+        delete from friends where friends.id = #{id}
+    </delete>
+
+    <delete id="deleteUserFriend">
+        delete from friends where friends.userId = #{userId}
+    </delete>
+
+    <delete id="deleteAdminFriend">
+        delete from friends where friends.friendId = #{adminId}
+    </delete>
+
+    <insert id="addFriend" parameterType="Friends">
+        insert into friends(userId, friendId, friendTime) VALUES (#{userId}, #{friendId}, #{friendTime})
+    </insert>
+
+    <select id="existFriend" resultType="Friends">
+        select * from friends where friends.friendId = #{friendId} and friends.userId = #{userId}
+    </select>
+
+    <select id="getFriendNum" resultType="int">
+        select count(*) from friends where friends.friendId = #{adminId}
+    </select>
+
+</mapper>

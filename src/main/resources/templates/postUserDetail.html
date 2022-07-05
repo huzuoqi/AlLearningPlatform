@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::headCss('发布者个人信息')">
+<body>
+<div th:insert="common/head::header"></div>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui top attached segment">
+            <div class="ui middle center aligned grid">
+                <div class="column">
+                    <h3 class="ui blue header">发布者个人信息</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui attached segment m-padded-tb-large">
+            <div class="ui mobile reversed stackable grid">
+                <div class="four wide column">
+                    <img id="postUserAvatar" class="ui rounded image">
+                    <br>
+                    <button id="friendButton" onclick="addFriend()" class="ui blue button fluid">关注</button>
+                </div>
+
+                <div class="six wide column">
+                    <div class="ui center aligned attached segment" style="border: none;">
+                        <p class="m-text">名称 : <span id="postUserName"></span></p>
+                        <p class="m-text">年龄 : <span id="postUserAge"></span></p>
+                        <p class="m-text">生日 : <span id="PostUserBirthday"></span></p>
+                        <p class="m-text">注册时间 : <span id="postUserRegisterTime"></span></p>
+                    </div>
+                </div>
+
+                <div class="six wide column">
+                    <div class="ui center aligned attached segment" style="border: none;">
+                        <p class="m-text">邮件 : <span id="postUserEmail"></span></p>
+                        <p class="m-text">电话 : <span id="postUserTelephone"></span></p>
+                        <p class="m-text">文章数 : <span id="postUserArticleNum"></span></p>
+                        <p class="m-text">关注数 : <span id="postUserFriendNum"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui top attached teal segment">
+            <div class="ui vertical m-padded-wide-mini m-padded-tb-large segment" id="content">
+
+            </div>
+
+            <!--footer-->
+            <div class="ui bottom attached segment">
+                <div class="ui middle aligned three column grid">
+                    <div class="column">
+                        <a onclick="prePage()" class="ui mini blue basic button">上一页</a>
+                    </div>
+                    <div class="middle column">
+                        <div class="ui fluid action input">
+                            <input id="inputPage" type="text" placeholder="当前/总数">
+                            <div onclick="getSpecifyPage()" class="ui blue mini button">跳转</div>
+                        </div>
+                    </div>
+                    <div class="right aligned  column">
+                        <a onclick="nextPage()" class="ui mini blue basic button">下一页</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/head::headJs"></div>
+<script type="text/javascript" th:src="@{/js/postUserDetail.js}"></script>
+</body>
+</html>

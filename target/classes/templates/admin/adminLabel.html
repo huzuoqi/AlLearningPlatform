@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/adminHead::headCss('管理标签')">
+<body>
+<!--头部-->
+<div th:insert="common/adminHead::header"></div>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <div class="ui segment">
+            <div class="ui grid padded four wide fields">
+                <div class="ui input field">
+                    <input id="labelName" type="text" placeholder="标签名">
+                </div>
+                <div class="field">
+                    <button onclick="searchLabel()" class="ui blue basic middle button"><i class="search icon"></i>搜索</button>
+                </div>
+                <div class="field">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" id="totalNum"></h2> 个
+                </div>
+            </div>
+        </div>
+
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>标签名</th>
+                <th>标签别名</th>
+                <th>标签描述</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="labelBody">
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="5">
+                    <div class="ui mini pagination menu">
+                        <a href="javascript:void(0);" onclick="prePage()" class="icon item">上一页</a>
+                        <a href="javascript:void(0);" onclick="nextPage()" class="icon item">下一页</a>
+                    </div>
+                    <a href="javascript:void(0);" onclick="addLabelButton()" class="ui right floated middle blue basic button">新增</a>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <div id="popAddLabel" class="ui center aligned padded mini modal">
+            <p class="ui header centered aligned">标签名</p>
+            <div class="ui fluid input">
+                <input id="addTitle" type="text" placeholder="标签名">
+            </div>
+            <p class="ui header centered aligned">标签别名</p>
+            <div class="ui fluid input">
+                <input id="addNick" type="text" placeholder="标签别名">
+            </div>
+            <form class="ui reply form padded">
+                <br>
+                <p class="ui header centered aligned">标签描述</p>
+                <div class="field">
+                    <textarea id="addDescribe" placeholder="标签描述"></textarea>
+                </div>
+            </form>
+            <div class="ui fluid button border">
+                <button id="addLabel" onclick="addLabel()" class="fluid ui blue button">确认添加</button>
+            </div>
+        </div>
+
+        <div id="popUpdateLabel" class="ui center aligned padded mini modal">
+            <p class="ui header centered aligned">标签名</p>
+            <div class="ui fluid input">
+                <input id="updateTitle" type="text">
+            </div>
+            <p class="ui header centered aligned">标签别名</p>
+            <div class="ui fluid input">
+                <input id="updateNick" type="text">
+            </div>
+            <form class="ui reply form padded">
+                <br>
+                <p class="ui header centered aligned">标签描述</p>
+                <div class="field">
+                    <textarea id="updateDescribe"></textarea>
+                </div>
+            </form>
+            <div class="ui fluid button border">
+                <button id="updateLabel" onclick="updateLabel()" class="fluid ui blue button">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/adminHead::headJs"></div>
+<script th:src="@{/js/admin/adminLabel.js}"></script>
+</body>
+</html>

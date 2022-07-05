@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.ai_learningplatform.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="Users">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickName"/>
+        <result column="telephone" jdbcType="BIGINT" property="telephone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="birthday" jdbcType="DATE" property="birthday"/>
+        <result column="registerTime" jdbcType="DATE" property="registerTime"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+    </resultMap>
+    <!--根据用户名密码查询用户信息-->
+    <!--application.yml 中通过 type-aliases-package 指定了实体类的为了，因此-->
+    <select id="getUserNameAndPassword" resultType="Users">
+        select *
+        from users
+        where userName = #{userName,jdbcType=VARCHAR}
+    </select>
+<!--    注册用户-->
+    <insert id="addUser" parameterType="Users">
+        insert into users (userName,password,nickName,telephone,email,age,birthday,registerTime,avatar)
+         values (#{userName},#{password},#{nickName},#{telephone},#{email},#{age},#{birthday},#{registerTime},#{avatar});
+    </insert>
+
+    <update id="updatePassword" >
+        update users set password = #{password} where users.id = #{id}
+    </update>
+
+    <update id="updateAvatar" >
+        update users set avatar = #{avatar} where users.id = #{id}
+    </update>
+
+    <select id="getBaseInfo" resultType="Users">
+        select * from users where users.id = #{id}
+    </select>
+
+    <update id="updateBaseInfo" parameterType="Users">
+        update users set nickName = #{nickName},telephone = #{telephone},email = #{email},age = #{age},birthday = #{birthday} where userName = #{userName};
+    </update>
+
+    <delete id="deleteUser">
+        delete from users where users.id = #{id}
+    </delete>
+
+    <select id="getQueryAllUsers" resultType="Users">
+        select * from users where users.userName like ${name}
+    </select>
+
+</mapper>

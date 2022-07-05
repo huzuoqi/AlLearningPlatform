@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::headCss('收藏')">
+<body>
+<!--头部-->
+<div th:insert="common/head::header"></div>
+<!--中间内容-->
+<div class="m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <!--左边博客列表-->
+            <div class="eleven wide column">
+                <!--header-->
+                <div class="ui top attached segment">
+                    <div class="ui  middle aligned two column grid">
+                        <div class="column">
+                            <h3 class="ui blue header">收藏</h3>
+                        </div>
+                        <div class="right aligned  column">
+                            共 <h2 class="ui orange header m-inline-block m-text-thin" id="totalNum"></h2> 篇
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui attached segment">
+                    <div class="ui vertical m-padded-wide-mini m-padded-tb-large segment" id = "content">
+
+                    </div>
+                </div>
+
+                <!--footer-->
+                <div class="ui bottom attached segment">
+                    <div class="ui middle aligned three column grid">
+                        <div class="column">
+                            <a onclick="prePage()" class="ui mini blue basic button">上一页</a>
+                        </div>
+                        <div class="middle column">
+                            <div class="ui fluid action input">
+                                <input id="inputPage" type="text" placeholder="当前/总数">
+                                <div onclick="getSpecifyPage()" class="ui blue mini button">跳转</div>
+                            </div>
+                        </div>
+                        <div class="right aligned  column">
+                            <a onclick="nextPage()" class="ui mini blue basic button">下一页</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--右边的top-->
+            <div class="five wide column">
+                <!--分类-->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="id badge icon blue"></i> 按发布者分类
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui blue segment" id = "collectPostUser">
+
+                    </div>
+                </div>
+
+                <!--标签-->
+                <div class="ui segments m-margin-top-large">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="tags icon blue"></i> 按标签分类
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui blue segment" id="collectLabel">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/head::headJs"></div>
+<script th:src="@{/js/collect.js}"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+<!--底部 footer-->
+<footer class="ui inverted vertical segment m-padded-tb-large m-shadow-small m-opacity-mini2" th:fragment="footer">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="four wide column">
+                <div class="ui inverted linked list">
+                    <div class="item">
+                        <img th:src="@{img/wechat.png}" class="ui rounded image" alt="" style="width: 120px">
+                    </div>
+                </div>
+            </div>
+            <div class="five wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini2">联系我</h4>
+                <div class="ui inverted linked list m-text-thin m-text-spaced m-opacity-mini">
+                    <p class="item">Email:huzuoqi0429@163.com</p>
+                    <p class="item">QQ:2644668743</p>
+                    <p class="item">Telephone:17513365649</p>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini2">人工智能讲习平台</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这里是人工智能讲习平台，你可以在这里学习最前沿的技术，获取最新的资讯，认识志同道合的朋友，为了美好的未来奋斗。我们的口号是：<br>技术无国界，学习无界限!</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-bottomNote">Copyright@2021 - 2022 huzuoqi Designed 胡作启</p>
+    </div>
+</footer>
+</body>
+</html>

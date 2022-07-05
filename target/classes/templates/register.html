@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/modules/layui/css/layui.css}">
+    <script type="text/javascript" th:src="@{/modules/layui/layui.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/modules/toast/jquery.toast.css}">
+    <script type="text/javascript" th:src="@{/modules/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/modules/toast/jquery.toast.js}"></script>
+    <script type="text/javascript" th:src="@{/js/register.js}"></script>
+    <script type="text/javascript" th:src="@{/js/toast.js}"></script>
+    <title>用户注册</title>
+</head>
+<body>
+    <div class="tpt-register">
+        <h2>用户注册页面</h2>
+        <form>
+            <input id="userName" type="text" name="name" placeholder="请输入账号">
+            <input id="userPwd1" type="password" name="password" placeholder="请输入密码">
+            <input id="userPwd2" type="password" name="confirmPassword" placeholder="请确认密码">
+            <input id="nickName" type="text" name="nickName" placeholder="请输入昵称">
+            <input id="telephone" type="text" name="telephone" placeholder="请输入电话">
+            <input id="email" type="text" name="email" placeholder="请输入邮件">
+            <input name="birthday" type="text" id="birthday" placeholder="请选择生日">
+            <button id="btn_login" type="button" onclick="getRegister()">立即注册</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/adminHead::headCss('个人信息')">
+<body>
+<!--头部-->
+<div th:insert="common/adminHead::header"></div>
+
+<div class="m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="ui four wide column"></div>
+            <div class="ui eight wide column">
+                <div class="ui top attached segment">
+                    <div class="ui center aligned large header">个人信息</div>
+                </div>
+                <div class="ui grid attached segment">
+                    <div class="ui center aligned attached segment">
+                        <div  class="ui medium header">头像</div>
+                        <img id="adminAvatarShow" class="ui rounded image centered bordered medium">
+                        <br>
+                        <div id="popAvatar" class="ui center aligned  mini modal">
+                            <form th:action="changeAdminAvatar" id="avatarFile" th:method="post" enctype="multipart/form-data">
+                                <div class="ui fluid button">
+                                    <div style="width: 100%;height: 100%;position: relative;" class="ui orange button">选择文件
+                                        <input type="file" style="width:100%;opacity:0;position: absolute;right: 0;top:0; overflow: hidden;" value=" " name="file" class="ui blue button" accept="image/*">
+                                    </div>
+                                    <br/>
+                                    <input type="submit" style="width: 100%" class="ui blue button" id="uploadAvatar" value="上传">
+                                </div>
+                                <img id="popAvatarImg" class="ui rounded image bordered big">
+                            </form>
+                        </div>
+                        <button id="changeAvatar" style="width: 50%" class="ui primary blue button">修改头像</button>
+                        <div class="ui medium header">账号信息</div>
+                        <p class="m-text">用户名称 : <span id="adminName"></span></p>
+                        <p class="m-text">年龄 : <span id="adminAge"></span></p>
+                        <p class="m-text">生日 : <span id="adminBirthday"></span></p>
+                        <p class="m-text">邮件 : <span id="adminEmail"></span></p>
+                        <p class="m-text">电话 : <span id="adminTelephone"></span></p>
+                        <p class="m-text">注册时间 : <span id="adminRegisterTime"></span></p>
+                        <button id="changeAdminInfo" class="fluid ui blue button">修改信息</button>
+                        <br>
+                        <button id="deleteAdmin" th:if="${session.power} eq '0'" class="fluid ui blue button">删除账号</button>
+                        <div id="popDeleteAdmin" class="ui center aligned  mini modal">
+                            <div class="ui center aligned attached segment">
+                                <p style="color: red" class="m-text">此操作将删除账号的所有信息，请谨慎操作！</p>
+                            </div>
+                            <div class="ui fluid input attached segment">
+                                <input id="confirmPassword" type="password" placeholder="请输入密码验证">
+                            </div>
+                            <div class="ui fluid button border">
+                                <button id="confirmDeleteAdmin" class="fluid ui blue button">确认删除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui four wide column"></div>
+        </div>
+    </div>
+</div>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/adminHead::headJs"></div>
+<script th:src="@{/modules/jquery-form.js}"></script>
+<script th:src="@{/js/admin/adminDetail.js}"></script>
+</body>
+</html>

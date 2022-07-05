@@ -1,0 +1,1 @@
+人工智能讲习平台，基于Springboot+Thymeleaf+Jquery+Layui+SemanticUi

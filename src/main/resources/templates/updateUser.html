@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::headCss('修改个人信息')"></head>
+<link rel="stylesheet" type="text/css" th:href="@{/modules/layui/css/layui.css}">
+<body>
+
+<!--头部-->
+<meta http-equiv=“Content-Type” content=“multipart/form-data; charset=utf-8”>
+<div th:insert="common/head::header"></div>
+
+<div class="m-padded-tb-large m-opacity-mini2">
+  <div class="ui container">
+    <div class="ui stackable grid">
+      <div class="ui four wide column"></div>
+      <div class="ui eight wide column">
+        <div class="ui top attached segment">
+          <div class="ui center aligned large header">修改个人信息</div>
+        </div>
+        <div class="ui aligned attached segment">
+          <div class="ui center aligned medium header">用户名称</div>
+          <div class="ui fluid big input">
+            <input id="userName" style="text-align: center" type="text" name="name" disabled="disabled">
+          </div>
+          <div class="ui center aligned medium header">用户昵称</div>
+          <div class="ui fluid big input">
+            <input id="userNickName" style="text-align: center" type="text" name="nickName" >
+          </div>
+          <div class="ui center aligned medium header">用户电话</div>
+          <div class="ui fluid big input">
+            <input id="userTelephone" style="text-align: center" type="text" name="telephone" >
+          </div>
+          <div class="ui center aligned medium header">用户邮件</div>
+          <div class="ui fluid big input">
+            <input id="userEmail" style="text-align: center" type="text" name="email" >
+          </div>
+          <div class="ui center aligned medium header">用户年龄</div>
+          <div class="ui fluid big input">
+            <input name="age" style="text-align: center" type="text" id="userAge" disabled="disabled">
+          </div>
+          <div class="ui center aligned medium header">用户生日</div>
+          <div class="ui fluid big input">
+            <input name="birthday" style="text-align: center" type="text" id="userBirthday" >
+          </div>
+          <div class="ui center aligned medium header">注册时间</div>
+          <div class="ui fluid big input">
+            <input name="registerTime" style="text-align: center" type="text" id="userRegisterTime" disabled="disabled">
+          </div>
+          <div class="ui divider"></div>
+          <button class="ui button fluid blue" id="btn_update" type="button" onclick="updateInfo()">立即更新</button>
+        </div>
+      </div>
+      <div class="ui four wide column"></div>
+    </div>
+  </div>
+</div>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/head::headJs"></div>
+<script type="text/javascript" th:src="@{/modules/layui/layui.js}"></script>
+<script th:src="@{/js/updateUser.js}"></script>
+</body>
+</html>

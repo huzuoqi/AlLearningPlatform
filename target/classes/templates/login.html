@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/modules/toast/jquery.toast.css}">
+    <script type="text/javascript" th:src="@{/modules/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/modules/toast/jquery.toast.js}"></script>
+    <script type="text/javascript" th:src="@{/js/toast.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+    <title>用户登陆</title>
+</head>
+<body>
+    <div class="tpt-login">
+        <h2>用户登陆页面</h2>
+        <form>
+            <input id="userName" type="text" name="name" placeholder="请输入账号">
+            <input id="userPwd" onkeyup="keyup(event)" type="password" name="password" placeholder="请输入密码">
+            <p>
+                <a href="javascript:void(0);" onclick="register()">前往注册</a>
+                <a style="float: right" href="javascript:void(0);" onclick="forget()">忘记密码</a>
+            </p>
+            <button id="btn_login" type="button" onclick="getLogin()">立即登录</button>
+            <a  style="float: right" href="javascript:void(0);" onclick="toAdminLogin()">切换后台登陆</a>
+        </form>
+    </div>
+</body>
+</html>

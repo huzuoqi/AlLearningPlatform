@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::headCss('标签信息')">
+<body>
+<div th:insert="common/head::header"></div>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui top attached segment">
+            <div class="ui middle center aligned grid">
+                <div class="column">
+                    <span class="ui blue header" id="labelTitle"></span>
+                    <div id="labelNick" style="float: right;position:absolute;" class="ui basic blue left pointing label"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui attached segment m-padded-tb-large">
+            <div class="ui mobile reversed stackable grid">
+                <div class="four wide column">
+                    <img id="labelImg" style="width: 100%;height: 100%;" alt="" class="ui rounded image">
+                </div>
+                <div class="twelve wide column">
+                    <div class="ui center aligned attached segment" style="border: none;">
+                        <p class="m-text" id="labelDescribe"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui attached segment">
+            <div class="ui  middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui blue header">文章</h3>
+                </div>
+                <div class="right aligned  column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" id="totalNum"></h2> 篇
+                </div>
+            </div>
+        </div>
+
+        <div class="ui top attached teal segment">
+            <div class="ui vertical m-padded-wide-mini m-padded-tb-large segment" id="content">
+
+            </div>
+
+            <!--footer-->
+            <div class="ui bottom attached segment">
+                <div class="ui middle aligned three column grid">
+                    <div class="column">
+                        <a onclick="prePage()" class="ui mini blue basic button">上一页</a>
+                    </div>
+                    <div class="middle column">
+                        <div class="ui fluid action input">
+                            <input id="inputPage" type="text" placeholder="当前/总数">
+                            <div onclick="getSpecifyPage()" class="ui blue mini button">跳转</div>
+                        </div>
+                    </div>
+                    <div class="right aligned  column">
+                        <a onclick="nextPage()" class="ui mini blue basic button">下一页</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/head::headJs"></div>
+<script type="text/javascript" th:src="@{/js/labeldetail.js}"></script>
+</body>
+</html>

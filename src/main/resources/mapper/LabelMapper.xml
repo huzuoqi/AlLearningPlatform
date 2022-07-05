@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.ai_learningplatform.mapper.LabelMapper">
+
+    <select id="getAllLabel" resultType="Label">
+        select * from label
+    </select>
+
+    <select id="getOneLabel" resultType="Label">
+        select * from label where id = #{id}
+    </select>
+
+    <select id="getQueryLabel" resultType="Label">
+        select * from  label where label.labelName like ${name}
+    </select>
+
+    <update id="updateLabel" parameterType="Label">
+        update label set labelName = #{labelName},labelNick = #{labelNick},labelDescribe = #{labelDescribe} where id = #{id}
+    </update>
+
+    <insert id="addLabel" parameterType="Label">
+        insert into label(labelName, labelNick, labelDescribe) VALUES (#{labelName}, #{labelNick}, #{labelDescribe})
+    </insert>
+
+</mapper>

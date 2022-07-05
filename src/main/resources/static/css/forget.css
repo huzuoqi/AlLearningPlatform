@@ -1,0 +1,69 @@
+body {
+    background: #6495ED;
+}
+.tpt-forget {
+    width: 360px;
+    height: 720px;
+    padding: 50px 30px;
+    background: #FFF;
+    border-radius: 8px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.tpt-forget h2 {
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+.tpt-forget input {
+    width: 340px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    height: 55px;
+    line-height: 55px;
+    border: 0;
+    background: #f5f5f5;
+    font-size: 16px;
+    color: #666;
+}
+.tpt-forget button {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    width: 360px;
+    background: #1e9fff;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.tpt-forget p {
+    font-size: 14px;
+    color: #777;
+}
+.tpt-forget a {
+    font-size: 14px;
+    color: #3581b9;
+    text-decoration-line: none;
+}
+
+#confirm {
+    width: 235px;
+}
+
+#send {
+    width: 100px;
+    float: right;
+    margin-bottom: 20px;
+    margin-top: 0;
+    height: 55px;
+    line-height: 55px;
+}

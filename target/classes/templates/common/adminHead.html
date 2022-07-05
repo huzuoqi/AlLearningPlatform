@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headCss(title)">
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/modules/toast/jquery.toast.css}">
+    <link rel="stylesheet" th:href="@{css/Index_me.css}">
+
+    <title th:text="${title}">"</title>
+</head>
+<body>
+<!--导航-->
+<nav class="ui attached segment m-padded-tb-mini m-shadow-small m-opacity-mini2" th:fragment="header" style="position: relative;z-index: 999;">
+    <div class="ui container">
+        <div class="ui secondary stackable menu">
+            <h3 class="ui blue header m-margin-top-small">后台管理</h3>
+            <a href="javascript:void(0);" onclick="topToArticle()" class="m-item item m-mobile-hide"><i class="home icon"></i>文章</a>
+            <a href="javascript:void(0);" th:if="${session.power} eq '1'" onclick="topToUser()" class="m-item item m-mobile-hide"><i class="idea icon"></i>用户</a>
+            <a href="javascript:void(0);" th:if="${session.power} eq '1'" onclick="topToPostUser()" class="m-item item m-mobile-hide"><i class="idea icon"></i>发布者</a>
+            <a href="javascript:void(0);" th:if="${session.power} eq '1'" onclick="topToLabel()" class="m-item item m-mobile-hide"><i class="idea icon"></i>标签</a>
+            <a href="javascript:void(0);" th:if="${session.power} eq '1'" onclick="topToComment()" class="m-item item m-mobile-hide"><i class="tags icon"></i>评论</a>
+            <div class="right m-item m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text"><img class="ui avatar image" id="userAvatar" th:src="${'/img/avatar/' + session.loginAdmin.avatar}">
+                        <span th:text="${session.loginAdmin.adminName}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu floating">
+                        <a href="javascript:void(0);" onclick="adminDetail()" class="item">个人信息</a>
+                        <a href="javascript:void(0);" onclick="updateAdmin()" class="item">修改信息</a>
+                        <a href="javascript:void(0);" onclick="adminLogout()" class="item">退出登陆</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<div th:fragment="headJs">
+    <script th:src="@{/modules/jquery.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript" th:src="@{/modules/toast/jquery.toast.js}"></script>
+    <script type="text/javascript" th:src="@{/js/toast.js}"></script>
+    <script th:src="@{/js//admin/adminHead.js}"></script>
+</div>
+
+</body>
+</html>

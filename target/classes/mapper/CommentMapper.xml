@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.ai_learningplatform.mapper.CommentMapper">
+
+    <select id="getArticleComment" resultType="Comment">
+        select comment.id,comment.commentId, comment.articleId, comment.postId, comment.parentId, comment.comment, comment.commentTime, users.nickName as commentName, users.avatar as commentAvatar from comment left join users on comment.commentId = users.id where comment.articleId = #{articleId}
+    </select>
+
+    <insert id="addComment" parameterType="Comment">
+        insert into comment(commentId, articleId, postId, parentId, comment, commentTime) VALUES (#{commentId}, #{articleId}, #{postId},#{parentId}, #{comment}, #{commentTime})
+    </insert>
+
+    <delete id="deleteComment" parameterType="int">
+        delete from comment where comment.id = #{id} or comment.parentId = #{id}
+    </delete>
+
+    <delete id="deleteUserComment" parameterType="int">
+        delete from comment where comment.commentId = #{userId}
+    </delete>
+
+    <delete id="deletePostComment" parameterType="int">
+        delete from comment where comment.postId = #{postId}
+    </delete>
+
+    <delete id="deleteArticleComment" parameterType="int">
+        delete from comment where comment.articleId = #{articleId}
+    </delete>
+
+    <select id="getQueryAllComment" resultType="Comment">
+        select comment.id,comment.commentId, comment.articleId, comment.postId, comment.parentId, comment.comment, comment.commentTime, users.userName as commentName from comment left join users on comment.commentId = users.id where comment.comment like ${text}
+    </select>
+
+    <select id="getOneComment" resultType="Comment">
+        select * from comment where id = #{id}
+    </select>
+
+</mapper>

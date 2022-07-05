@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/adminHead::headCss('管理评论')">
+<body>
+<!--头部-->
+<div th:insert="common/adminHead::header"></div>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-large m-opacity-mini2">
+    <div class="ui container">
+        <div class="ui segment">
+            <div class="ui grid padded four wide fields">
+                <div class="ui input field">
+                    <input id="commentText" type="text" name="title" placeholder="评论内容">
+                </div>
+                <div class="field">
+                    <button onclick="searchComment()" class="ui blue basic middle button"><i class="search icon"></i>搜索</button>
+                </div>
+                <div class="field">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" id="totalNum"></h2> 个
+                </div>
+            </div>
+        </div>
+
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>评论人</th>
+                <th>文章</th>
+                <th>作者</th>
+                <th>父评论</th>
+                <th>评论内容</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="commentBody">
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="8">
+                    <div class="ui mini pagination menu">
+                        <a href="javascript:void(0);" onclick="prePage()" class="icon item">上一页</a>
+                        <a href="javascript:void(0);" onclick="nextPage()" class="icon item">下一页</a>
+                    </div>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <div id="popDeleteComment" class="ui center aligned padded mini modal">
+            <div class="ui header centered aligned">
+                <p style="color: red" class="m-text">此操作将删除当前评论，请谨慎操作！</p>
+            </div>
+            <div class="ui fluid button border">
+                <button id="deleteComment" onclick="deleteComment()" class="fluid ui blue button">确认删除</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/adminHead::headJs"></div>
+<script th:src="@{/js/admin/adminComment.js}"></script>
+</body>
+</html>

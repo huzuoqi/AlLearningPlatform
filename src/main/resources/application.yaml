@@ -1,0 +1,45 @@
+spring:
+  #数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/AI_platform?characterEncoding=UTF-8
+    username: root
+    password: huzuoqi
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    cache: false
+    suffix:  .html
+    prefix: classpath:/templates/
+  #邮件配置
+  mail:
+    host: smtp.163.com
+    username: huzuoqi0429@163.com #发送邮件人的邮箱
+    password: YSXUBWQHJGAIKTDT #这个密码是邮箱设置里SMTP服务生成的授权码
+    nickname: 人工智能讲习平台
+    default-encoding: UTF-8
+
+#MyBatis配置
+mybatis:
+  # 指定 mapper.xml 的位置
+  mapper-locations: classpath:/mapper/*.xml
+  #扫描实体类的位置,在此处指明扫描实体类的包，在 mapper.xml 中就可以不写实体类的全路径名
+  type-aliases-package: com.hu.ai_learningplatform.pojo
+  configuration:
+    #默认开启驼峰命名法，可以不用设置该属性
+    map-underscore-to-camel-case: true
+
+
+#分页pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
+
+file:
+  upload:
+    path: /Users/huzuoqi/IdeaProjects/AI_LearningPlatform/src/main/resources/static/img/
+    relative: /img/

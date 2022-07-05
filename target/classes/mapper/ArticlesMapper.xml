@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.ai_learningplatform.mapper.ArticlesMapper">
+
+<!--    查询所有文章-->
+    <select id="getAllArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type
+    </select>
+<!--    查询推荐文章-->
+    <select id="getRecommendArticles" resultType="Articles">
+        SELECT * FROM articles ORDER BY RAND() LIMIT 10
+    </select>
+
+    <select id="getOneArticle" parameterType="int" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.id = #{id}
+    </select>
+
+    <update id="addReadNum" parameterType="int" >
+        update articles set articles.readNum = articles.readNum+1 WHERE articles.id = #{id}
+    </update>
+
+    <update id="addLikeNum" parameterType="int">
+        update articles set articles.likeNum = articles.likeNum+1 WHERE articles.id = #{id}
+    </update>
+
+    <update id="deleteLikeNum" parameterType="int">
+        update articles set articles.likeNum = articles.likeNum-1 WHERE articles.id = #{id}
+    </update>
+
+    <update id="addCommentNum" parameterType="int" >
+        update articles set articles.commentCount = articles.commentCount+1 WHERE articles.id = #{id}
+    </update>
+
+    <update id="deleteCommentNum" parameterType="int" >
+        update articles set articles.commentCount = articles.commentCount-1 WHERE articles.id = #{id}
+    </update>
+
+    <select id="getQueryArticle" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.title like ${title}
+    </select>
+
+    <select id="getLabelArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.type = ${labelId}
+    </select>
+
+    <select id="getAdminArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.adminId = ${adminId}
+    </select>
+
+    <select id="getQueryLabelArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.type = ${labelId} and articles.title like ${title}
+    </select>
+
+    <select id="getQueryAdminArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.adminId = ${adminId} and articles.title like ${title}
+    </select>
+
+    <select id="getQueryAdminLabelArticles" resultType="Articles">
+        SELECT articles.id,articles.title,articles.digest,articles.likeNum,articles.readNum,articles.commentCount,articles.date,articles.url,admin.id as adminId,admin.adminName,admin.avatar as adminAvatar,label.id as labelId,label.labelName from articles INNER JOIN admin ON articles.adminId = admin.id INNER JOIN label ON label.id=articles.type where articles.adminId = ${adminId} and articles.title like ${title} and articles.type = ${labelId}
+    </select>
+
+    <delete id="deleteArticles">
+        delete from articles where articles.id = #{id}
+    </delete>
+
+    <delete id="deleteAdminArticles">
+        delete from articles where articles.adminId = #{adminId}
+    </delete>
+
+    <delete id="deleteLabelArticles">
+        delete from articles where articles.type = #{labelId}
+    </delete>
+
+    <insert id="addArticles" parameterType="Articles">
+        insert into articles(title,type, digest, readNum, likeNum,commentCount, date, url, adminId) VALUES (#{title},#{labelId},#{digest}, #{readNum}, #{likeNum},#{commentCount}, #{date}, #{url}, #{adminId})
+    </insert>
+
+    <update id="updateArticles" parameterType="Articles">
+        update articles set title = #{title},type = #{labelId},digest = #{digest},url = #{url} where id = #{id}
+    </update>
+
+</mapper>

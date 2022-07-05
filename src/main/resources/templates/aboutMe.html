@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::headCss('自我介绍')">
+
+<body>
+<!--头部-->
+<div th:insert="common/head::header"></div>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-large">
+
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="eleven wide column">
+                <div class="ui segment">
+                    <img src="/img/aboutMe.jpg" alt="" class="ui rounded image">
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="m-text">	在自己默默的消化之后，选择把我的生活给记录下来，不会再次选择堕落，而是继续自己的学习，继续自己的杂七杂八。</p>
+                    <p class="m-text">	我决定真正的把我不曾告诉他人的一些微不足道的经历记录出来，当然了以后也将不再独自的隐瞒...</p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui orange basic left pointing label">编程</div>
+                    <div class="ui orange basic left pointing label">写作</div>
+                    <div class="ui orange basic left pointing label">听音乐</div>
+                    <div class="ui orange basic left pointing label">看电影</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Spring</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">SpringMvc</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">SpringBoot</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MySQL</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">redis</div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="https://github.com/huzuoqi" class="ui circular icon button"><i class="github icon"></i></a>
+                    <a href="#" class="ui wechat circular icon button"><i class="wechat icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="2644668743" data-position="bottom center"><i class="qq icon"></i></a>
+                </div>
+
+                <div class="ui wechat-qr flowing popup transition hidden">
+                    <img src="/img/wechat.png" alt="" class="ui rounded image" style="width: 120px">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部 footer-->
+<div th:insert="common/footer::footer"></div>
+<div th:insert="common/head::headJs"></div>
+<script>
+    $('.wechat').popup({
+        popup : $('.wechat-qr'),
+        position: 'bottom center'
+    });
+    $('.qq').popup();
+    $(function (){
+        $("#globeSearch").hide();
+    })
+</script>
+</body>
+</html>
